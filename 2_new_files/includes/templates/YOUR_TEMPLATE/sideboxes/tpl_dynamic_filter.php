@@ -156,6 +156,9 @@ if (PRODUCT_LIST_FILTER == 0) {
  */
 if (SHOW_FILTER_BY_PRICE == 'Yes') {
   if (count($priceArray) > 0) {
+// bof adding DYNAMIC_FILTER_PRICE_GROUP here as filter price didnt work
+    $group = DYNAMIC_FILTER_PREFIX . str_replace(' ', '', DYNAMIC_FILTER_PRICE_GROUP);
+// eof    
     $priceGap = floor(($max - $min) / (FILTER_MAX_RANGES - 1));
     if (FILTER_MIN_PRICE > 0 && $priceGap < FILTER_MIN_PRICE) {
       $priceGap = FILTER_MIN_PRICE;
@@ -216,8 +219,8 @@ if (SHOW_FILTER_BY_PRICE == 'Yes') {
       }
       ++$priceCount;
     }
-
-    $group = DYNAMIC_FILTER_PREFIX . str_replace(' ', '', DYNAMIC_FILTER_PRICE_GROUP);
+// bof move DYNAMIC_FILTER_PRICE_GROUP up
+//    $group = DYNAMIC_FILTER_PREFIX . str_replace(' ', '', DYNAMIC_FILTER_PRICE_GROUP);
     $content .= '<hr width="90%" size="0" />';
     $content .= '<div>';
     $content .= '<div class="dFilter">';
